@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Retirement Calculator - Free Retirement Planning Tool</title>
+  <meta name="description" content="Estimate your retirement savings, future income and retirement readiness with our free retirement calculator." />
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.example.com/retirement-calculator">
+
+  <meta property="og:title" content="Retirement Calculator">
+  <meta property="og:description" content="Free retirement planning calculator">
+  <meta property="og:type" content="website">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Retirement Calculator: See If You're On Track">
+  <meta name="twitter:description" content="Estimate your retirement savings and future income in less than 60 seconds.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ===== HERO SECTION ===== -->
+  <header class="hero" id="hero">
+    <div class="hero-bg"></div>
+    <div class="container hero__inner">
+      <div class="hero__badge">Free Retirement Planning Tool</div>
+      <h1 class="hero__title">Retirement Calculator: See If You're On Track</h1>
+      <p class="hero__subtitle">Estimate your retirement savings and future income in less than 60 seconds.</p>
+      <a href="#calculator" class="btn btn--primary btn--large smooth-scroll">Calculate My Retirement</a>
+      <div class="hero__stats">
+        <div class="hero__stat">
+          <span class="hero__stat-number">50-70</span>
+          <span class="hero__stat-label">Age Range</span>
+        </div>
+        <div class="hero__stat">
+          <span class="hero__stat-number">60s</span>
+          <span class="hero__stat-label">Quick Results</span>
+        </div>
+        <div class="hero__stat">
+          <span class="hero__stat-number">100%</span>
+          <span class="hero__stat-label">Free to Use</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
+    <div class="container nav__inner">
+      <a href="#hero" class="nav__logo smooth-scroll">Retire<span class="nav__logo-accent">Calc</span></a>
+      <ul class="nav__links">
+        <li><a href="#calculator" class="smooth-scroll">Calculator</a></li>
+        <li><a href="#results" class="smooth-scroll">Results</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="#faq" class="smooth-scroll">FAQ</a></li>
+      </ul>
+      <button class="nav__toggle" id="navToggle" aria-label="Toggle navigation menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== CALCULATOR SECTION ===== -->
+  <section class="section section--light" id="calculator">
+    <div class="container">
+      <div class="section__header">
+        <h2 class="section__title">Enter Your Details</h2>
+        <p class="section__desc">Fill in the information below to get your personalized retirement estimate.</p>
+      </div>
+      <div class="calculator-card">
+        <form class="calculator-form" id="calcForm" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="currentAge" class="form-label">Current Age</label>
+              <div class="form-input-wrap">
+                <input type="number" class="form-input" id="currentAge" min="18" max="99" value="50" required aria-describedby="ageHelp">
+              </div>
+              <span class="form-help" id="ageHelp">Enter your current age (18-99)</span>
+            </div>
+            <div class="form-group">
+              <label for="retireAge" class="form-label">Planned Retirement Age</label>
+              <div class="form-input-wrap">
+                <input type="number" class="form-input" id="retireAge" min="40" max="85" value="65" required>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="savings" class="form-label">Current Retirement Savings ($)</label>
+              <div class="form-input-wrap form-input-wrap--prepend">
+                <span class="input-prepend">$</span>
+                <input type="number" class="form-input" id="savings" min="0" value="250000" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="monthlyContribution" class="form-label">Monthly Contribution ($)</label>
+              <div class="form-input-wrap form-input-wrap--prepend">
+                <span class="input-prepend">$</span>
+                <input type="number" class="form-input" id="monthlyContribution" min="0" value="1000" required>
+              </div>
+            </div>
+          </div>
+          <div class="form-row form-row--three">
+            <div class="form-group">
+              <label for="returnRate" class="form-label">Expected Annual Return (%)</label>
+              <div class="form-input-wrap form-input-wrap--append">
+                <input type="number" class="form-input" id="returnRate" min="0" max="30" step="0.1" value="7" required>
+                <span class="input-append">%</span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inflationRate" class="form-label">Expected Inflation (%)</label>
+              <div class="form-input-wrap form-input-wrap--append">
+                <input type="number" class="form-input" id="inflationRate" min="0" max="20" step="0.1" value="2.5" required>
+                <span class="input-append">%</span>
+              </div>
+            </div>
+          </div>
+          <button type="submit" class="btn btn--primary btn--full" id="calcBtn">
+            <span class="btn__text">Calculate Results</span>
+            <span class="btn__spinner" id="btnSpinner">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+                <circle cx="12" cy="12" r="10" opacity="0.3"/>
+                <path d="M12 2a10 10 0 0 1 10 10"><animateTransform attributeName="transform" type="rotate" from="0 12 12" to="360 12 12" dur="1s" repeatCount="indefinite"/></path>
+              </svg>
+            </span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== RESULTS SECTION ===== -->
+  <section class="section section--dark" id="results">
+    <div class="container">
+      <div class="section__header">
+        <h2 class="section__title section__title--light">Your Retirement Results</h2>
+        <p class="section__desc section__desc--light">Here's a detailed breakdown of your retirement savings projection.</p>
+      </div>
+
+      <div class="results-summary" id="resultsSummary" aria-live="polite">
+        <p class="results-summary__text" id="resultsSummaryText">Enter your details above and click "Calculate Results" to see your projection.</p>
+      </div>
+
+      <div class="results-grid" id="resultsGrid">
+        <div class="result-card result-card--primary">
+          <div class="result-card__icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </div>
+          <div class="result-card__label">Total Retirement Savings</div>
+          <div class="result-card__value" id="resultTotal">$0</div>
+          <div class="result-card__caption">Projected balance at retirement</div>
+        </div>
+        <div class="result-card">
+          <div class="result-card__icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </div>
+          <div class="result-card__label">Total Contributions</div>
+          <div class="result-card__value" id="resultContributions">$0</div>
+          <div class="result-card__caption">Your total money invested</div>
+        </div>
+        <div class="result-card">
+          <div class="result-card__icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+          </div>
+          <div class="result-card__label">Investment Growth</div>
+          <div class="result-card__value result-card__value--green" id="resultGrowth">$0</div>
+          <div class="result-card__caption">Earnings on your investments</div>
+        </div>
+        <div class="result-card">
+          <div class="result-card__icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          </div>
+          <div class="result-card__label">Inflation-Adjusted Value</div>
+          <div class="result-card__value" id="resultInflationAdjusted">$0</div>
+          <div class="result-card__caption">Value in today's dollars</div>
+        </div>
+        <div class="result-card result-card--accent">
+          <div class="result-card__icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </div>
+          <div class="result-card__label">Monthly Retirement Income</div>
+          <div class="result-card__value" id="resultMonthlyIncome">$0</div>
+          <div class="result-card__caption">Based on the 4% withdrawal rule</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CHART SECTION ===== -->
+  <section class="section section--light" id="chart">
+    <div class="container">
+      <div class="section__header">
+        <h2 class="section__title">Your Savings Growth Over Time</h2>
+        <p class="section__desc">See how your retirement savings grow year by year with compound returns.</p>
+      </div>
+      <div class="chart-card">
+        <div class="chart-container">
+          <canvas id="retirementChart" width="800" height="400" aria-label="Retirement savings growth chart" role="img">
+            <p>Your browser does not support the canvas element. Please view the results table instead.</p>
+          </canvas>
+        </div>
+        <div class="chart-legend-custom" id="chartLegend"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== EDUCATIONAL SECTION ===== -->
+  <section class="section section--white" id="education">
+    <div class="container">
+      <div class="section__header">
+        <h2 class="section__title">How Much Money Do You Need To Retire?</h2>
+        <p class="section__desc">Understanding retirement planning is the first step toward financial freedom in your golden years.</p>
+      </div>
+      <div class="content-grid">
+        <article class="content-card">
+          <h3>The 4% Rule: Your Retirement Guideline</h3>
+          <p>One of the most widely accepted retirement planning principles is the <strong>4% rule</strong>. Created by financial planner William Bengen in 1994, this rule suggests that if you withdraw 4% of your retirement savings in your first year of retirement (and adjust that amount for inflation each year thereafter), your money should last at least 30 years. For example, if you have $1,000,000 saved, you could withdraw $40,000 in your first year of retirement. This rule has been tested against historical market data and has held up remarkably well across different time periods, including bear markets and periods of high inflation.</p>
+          <p>To determine your target number, simply multiply your desired annual retirement income by 25. If you need $60,000 per year in retirement, your target savings would be $1,500,000. This is often called the <strong>25x rule</strong> and is a quick way to estimate whether you're on track.</p>
+        </article>
+        <article class="content-card">
+          <h3>Inflation: The Silent Threat to Your Retirement</h3>
+          <p>Inflation is often called the silent thief of retirement savings, and for good reason. At a historical average of about 3% per year, inflation cuts your purchasing power in half roughly every 24 years. That means a $100,000 annual lifestyle today would require over $200,000 in 25 years just to maintain the same standard of living.</p>
+          <p>This is why simply saving money in a bank account is not enough for retirement. Your savings need to grow at a rate that outpaces inflation. Most financial advisors recommend a diversified portfolio that includes stocks, bonds, and other assets that have historically provided returns well above the inflation rate. When using our retirement calculator, pay close attention to the <strong>inflation-adjusted value</strong> — this shows what your nest egg will actually be worth in today's purchasing power.</p>
+        </article>
+        <article class="content-card">
+          <h3>Investment Strategies for a Secure Retirement</h3>
+          <p>Building a retirement nest egg requires a disciplined investment approach. For most Americans within 10-20 years of retirement, a balanced portfolio is recommended. A common strategy is the <strong>60/40 portfolio</strong> — 60% stocks for growth and 40% bonds for stability. As you approach retirement, many advisors suggest gradually shifting toward a more conservative allocation, such as 50/50 or 40/60, to protect your savings from market volatility.</p>
+          <p>Dollar-cost averaging — consistently investing a fixed amount each month regardless of market conditions — is one of the most effective ways to build wealth over time. By contributing regularly to your 401(k), IRA, or taxable investment accounts, you buy more shares when prices are low and fewer when prices are high, naturally smoothing out market volatility. Our calculator assumes a consistent annual return, but remember that actual market returns vary year to year.</p>
+        </article>
+        <article class="content-card">
+          <h3>Social Security: Maximizing Your Benefits</h3>
+          <p>Social Security remains a critical component of retirement income for most Americans. The age at which you claim benefits has a significant impact on how much you receive each month. Your <strong>full retirement age (FRA)</strong> depends on your birth year — for those born in 1960 or later, it's 67 years old. You can claim as early as 62, but your benefits will be permanently reduced by up to 30%. Conversely, delaying benefits past your FRA up to age 70 increases your monthly benefit by about 8% per year.</p>
+          <p>The Social Security Administration reports that approximately 65% of retirees rely on Social Security for most of their income. To estimate your future benefits, you can create an account at ssa.gov to view your personalized estimates. Remember that Social Security was designed to replace only about 40% of your pre-retirement income, so you'll need additional savings to maintain your lifestyle.</p>
+        </article>
+        <article class="content-card">
+          <h3>Creating a Sustainable Retirement Income Plan</h3>
+          <p>A successful retirement isn't just about accumulating a large nest egg — it's about creating a reliable income stream that will last throughout your lifetime. The <strong>three-legged stool</strong> of retirement income consists of Social Security, pensions or retirement accounts (401(k)/IRA), and personal savings. For many retirees today, the 401(k) and IRA have replaced traditional pensions as the primary source of retirement funding.</p>
+          <p>When planning your retirement income, consider the <strong>sequence of returns risk</strong> — the danger of experiencing poor investment returns early in retirement when you're actively withdrawing money. This can significantly reduce how long your savings last. Many retirees use a <strong>bucket strategy</strong>: keeping 1-2 years of expenses in cash, 3-5 years in bonds, and the remainder in stocks for long-term growth. Using our retirement calculator regularly as you approach retirement can help you make informed decisions about when to retire and how much you can safely withdraw.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FAQ SECTION ===== -->
+  <section class="section section--light" id="faq">
+    <div class="container">
+      <div class="section__header">
+        <h2 class="section__title">Frequently Asked Questions</h2>
+        <p class="section__desc">Common questions about retirement planning answered by financial experts.</p>
+      </div>
+      <div class="faq-list" id="faqList">
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>What is the 4% rule in retirement planning?</span>
+            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">
+            <p>The 4% rule is a retirement withdrawal guideline created by financial planner William Bengen. It suggests that retirees can withdraw 4% of their portfolio in the first year of retirement and adjust that amount for inflation each year, with a high probability that their savings will last at least 30 years. For example, with $1,000,000 saved, you could withdraw $40,000 in year one.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>How much should I have saved for retirement by age 50?</span>
+            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">
+            <p>By age 50, most financial experts recommend having 5-6 times your annual salary saved for retirement. If you earn $80,000 per year, you should aim for $400,000 to $480,000 in retirement savings. By age 60, the recommendation increases to 8-10 times your annual salary. However, these are guidelines — your specific target depends on your desired retirement lifestyle and expected expenses.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>What is a good retirement age for most Americans?</span>
+            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">
+            <p>The traditional retirement age is 65, but many factors influence the ideal retirement age. Full retirement age for Social Security is 66 to 67 depending on your birth year. Delaying retirement even 2-3 years can significantly increase your monthly Social Security benefits and give your investments more time to grow. Many Americans now plan to work until age 67-70 to maximize their benefits and savings.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>How does inflation affect my retirement savings?</span>
+            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">
+            <p>Inflation erodes the purchasing power of your money over time. At 3% average inflation, prices double approximately every 24 years. This means a $50,000 annual retirement budget today would need about $100,000 in 24 years to maintain the same lifestyle. That's why it's crucial to invest your retirement savings in assets that historically outpace inflation, such as stocks and real estate, rather than keeping them in cash.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>Should I pay off my mortgage before retirement?</span>
+            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">
+            <p>Paying off your mortgage before retirement can reduce your monthly expenses and provide peace of mind. However, if your mortgage interest rate is low (under 4%), you might be better off investing extra money in the market where returns may be higher. Consider your personal comfort with debt and whether eliminating the mortgage helps you sleep better at night — there's value in both financial logic and emotional security.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>Can I retire with $500,000?</span>
+            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">
+            <p>Retiring with $500,000 is possible depending on your lifestyle and expenses. Using the 4% rule, $500,000 would generate about $20,000 per year ($1,667 per month) in retirement income. Combined with Social Security benefits (which average about $1,900 per month), you could have a modest but comfortable retirement. The key is keeping expenses low and potentially working part-time during early retirement.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>What is the full retirement age for Social Security?</span>
+            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">
+            <p>Full retirement age (FRA) for Social Security depends on your birth year. For those born between 1943 and 1954, FRA is 66. It gradually increases to 67 for those born in 1960 or later. You can claim as early as 62, but your benefits are permanently reduced. Claiming at 62 results in about a 30% reduction, while delaying to age 70 increases benefits by about 8% per year past your FRA.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>How much will healthcare cost in retirement?</span>
+            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">
+            <p>Healthcare is one of the biggest expenses in retirement. Fidelity estimates that an average retired couple age 65 will need approximately $315,000 to cover healthcare costs throughout retirement. This includes Medicare premiums, deductibles, copayments, and out-of-pocket prescription drug costs. It's important to factor healthcare expenses into your retirement planning and consider a Health Savings Account (HSA) if you're still eligible.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>What's the difference between a Traditional IRA and a Roth IRA?</span>
+            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">
+            <p>Traditional IRA contributions are tax-deductible in the year you make them, but withdrawals in retirement are taxed as ordinary income. Roth IRA contributions are made with after-tax dollars (no upfront deduction), but qualified withdrawals in retirement are completely tax-free. The best choice depends on whether you expect to be in a higher or lower tax bracket in retirement. Many retirees benefit from having both types for tax flexibility.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>When should I start taking Social Security benefits?</span>
+            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">
+            <p>The best age to start Social Security depends on your health, financial situation, and life expectancy. If you're in good health and have other income sources, waiting until age 70 maximizes your monthly benefit. If you need the income or have health concerns, claiming at 62 may be appropriate. For many people, claiming at full retirement age (66-67) provides a good balance. Consider using the break-even analysis — it typically takes about 12-15 years of benefits for delayed claiming to pay off.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>How much money do I need to retire at 65?</span>
+            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">
+            <p>The amount you need to retire at 65 depends on your desired lifestyle and expected expenses. A common rule of thumb is the 25x rule: multiply your desired annual retirement income by 25. If you want $60,000 per year, you need about $1.5 million saved. Using the 4% rule, a $1 million nest egg generates about $40,000 per year. Factor in Social Security benefits, which average around $1,900 per month per person, to determine your total retirement income.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>What is the best free retirement calculator?</span>
+            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">
+            <p>The best free retirement calculator is one that is accurate, easy to use, and respects your privacy. RetireCalc offers a completely free retirement calculator that runs entirely in your browser — no data is sent to any server. It covers all the essential projections: total savings, monthly income, investment growth, and inflation-adjusted value. Unlike many other calculators, RetireCalc requires no account creation, has no paywalls, and does not collect your financial data.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>Can I retire at 62 with $500,000 saved?</span>
+            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">
+            <p>Retiring at 62 with $500,000 is possible but requires careful planning. Using the 4% rule, $500,000 generates about $20,000 per year ($1,667 per month). If you claim Social Security at 62, your benefits will be permanently reduced by about 30% compared to waiting until full retirement age. Combined, you might have around $3,000-$3,500 per month in total income. This can work if your expenses are low, your home is paid off, and you have a budget. Consider working part-time during early retirement to supplement your income.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer" id="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div class="footer__brand">
+          <a href="#hero" class="nav__logo smooth-scroll">Retire<span class="nav__logo-accent">Calc</span></a>
+          <p class="footer__tagline">Free retirement planning tools for every American.</p>
+        </div>
+        <div class="footer__links">
+          <h4 class="footer__heading">Quick Links</h4>
+          <ul>
+            <li><a href="#calculator" class="smooth-scroll">Calculator</a></li>
+            <li><a href="#results" class="smooth-scroll">Results</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="#faq" class="smooth-scroll">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="footer__links">
+          <h4 class="footer__heading">Legal</h4>
+          <ul>
+            <li><a href="privacy-policy.html" rel="nofollow">Privacy Policy</a></li>
+            <li><a href="contact.html" rel="nofollow">Contact Us</a></li>
+            <li><a href="about.html" rel="nofollow">About</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__disclaimer">
+        <p><strong>Disclaimer:</strong> This retirement calculator is for educational and illustrative purposes only. It does not constitute financial advice. All results are estimates based on the information you provide and assumptions about future returns and inflation. Past performance does not guarantee future results. Please consult a qualified financial advisor for personalized retirement planning advice. We do not store or share any financial information you enter.</p>
+      </div>
+      <div class="footer__bottom">
+        <p>&copy; 2026 RetireCalc. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== FAQ STRUCTURED DATA ===== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is the 4% rule in retirement planning?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The 4% rule is a retirement withdrawal guideline suggesting retirees can withdraw 4% of their portfolio in the first year of retirement, adjusted for inflation each year, with a high probability their savings last at least 30 years."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How much should I have saved for retirement by age 50?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "By age 50, most financial experts recommend having 5-6 times your annual salary saved for retirement. By age 60, 8-10 times your annual salary."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is a good retirement age for most Americans?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The traditional retirement age is 65, but full retirement age for Social Security is 66-67 depending on birth year. Delaying to 70 maximizes benefits."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does inflation affect my retirement savings?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Inflation erodes purchasing power over time. At 3% average inflation, prices double approximately every 24 years, so your savings need growth that outpaces inflation."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I retire with $500,000?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Retiring with $500,000 is possible. Using the 4% rule it generates about $20,000 per year. Combined with Social Security benefits, a modest retirement is achievable."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the full retirement age for Social Security?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Full retirement age is 66 for those born 1943-1954, gradually increasing to 67 for those born 1960 or later."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How much will healthcare cost in retirement?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Fidelity estimates an average retired couple age 65 needs about $315,000 to cover healthcare costs throughout retirement, including Medicare premiums and out-of-pocket expenses."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What's the difference between a Traditional IRA and a Roth IRA?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Traditional IRA contributions are tax-deductible upfront but withdrawals are taxed. Roth IRA contributions are after-tax but withdrawals are tax-free."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "When should I start taking Social Security benefits?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The best age depends on health, finances, and life expectancy. Waiting to 70 maximizes benefits; claiming at 62 provides income sooner. Full retirement age (66-67) is a common compromise."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How much money do I need to retire at 65?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Using the 25x rule, multiply your desired annual income by 25. For $60,000 per year you need about $1.5 million. A $1 million nest egg generates about $40,000 per year using the 4% rule."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the best free retirement calculator?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The best free retirement calculator is accurate, easy to use, and privacy-focused. RetireCalc runs entirely in your browser with no data collection, no account required, and no paywalls."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I retire at 62 with $500,000 saved?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Retiring at 62 with $500,000 is possible but requires planning. The 4% rule generates about $20,000 per year. Combined with reduced Social Security benefits, expect around $3,000-$3,500 monthly income."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

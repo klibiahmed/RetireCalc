@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Retirement Planning Blog - RetireCalc</title>
+  <meta name="description" content="Expert retirement planning articles, tips, and guides. Learn about Social Security, the 4% rule, retirement savings goals, and more from RetireCalc." />
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.example.com/blog">
+  <meta property="og:title" content="Retirement Planning Blog - RetireCalc">
+  <meta property="og:description" content="Expert retirement planning articles, tips, and guides to help you plan for a secure financial future.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .page-header {
+      background: linear-gradient(135deg, var(--blue-900) 0%, var(--blue-800) 100%);
+      padding: 120px 0 60px;
+      text-align: center;
+    }
+    .page-header h1 {
+      color: var(--white);
+      font-size: clamp(2rem, 4vw, 2.75rem);
+      font-weight: 800;
+    }
+    .page-header p {
+      color: rgba(255,255,255,0.7);
+      font-size: 1.1rem;
+      margin-top: 12px;
+    }
+    .page-content {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 60px 24px;
+    }
+    .blog-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+    }
+    .blog-card {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: all var(--transition);
+    }
+    .blog-card:hover {
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-4px);
+      border-color: var(--gray-300);
+    }
+    .blog-card-body {
+      padding: 28px;
+    }
+    .blog-card-category {
+      display: inline-block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--blue-600);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+    }
+    .blog-card h2 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--gray-900);
+      margin-bottom: 12px;
+      line-height: 1.4;
+    }
+    .blog-card h2 a {
+      color: var(--gray-900);
+      text-decoration: none;
+    }
+    .blog-card h2 a:hover {
+      color: var(--blue-600);
+    }
+    .blog-card p {
+      font-size: 0.95rem;
+      color: var(--gray-600);
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+    .blog-card-meta {
+      font-size: 0.85rem;
+      color: var(--gray-400);
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--blue-300);
+      font-weight: 500;
+      margin-bottom: 24px;
+    }
+    .back-link:hover {
+      color: var(--blue-200);
+    }
+    @media (max-width: 640px) {
+      .page-header { padding: 100px 0 40px; }
+      .page-content { padding: 40px 16px; }
+      .blog-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo">Retire<span class="nav__logo-accent">Calc</span></a>
+      <ul class="nav__links">
+        <li><a href="index.html#calculator">Calculator</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="index.html#faq">FAQ</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="page-header">
+    <div class="container">
+      <a href="index.html" class="back-link">&larr; Back to Calculator</a>
+      <h1>Retirement Planning Blog</h1>
+      <p>Expert insights, tips, and guides to help you plan for a secure financial future.</p>
+    </div>
+  </section>
+
+  <section class="page-content">
+    <div class="blog-grid">
+
+      <article class="blog-card">
+        <div class="blog-card-body">
+          <span class="blog-card-category">Retirement Planning</span>
+          <h2><a href="blog/how-much-money-do-i-need-to-retire.html">How Much Money Do I Need To Retire?</a></h2>
+          <p>Learn how to calculate your retirement number using the 4% rule, the 25x rule, and other proven methods. Discover what factors affect how much you need to save for a comfortable retirement.</p>
+          <span class="blog-card-meta">June 19, 2026 &middot; 10 min read</span>
+        </div>
+      </article>
+
+      <article class="blog-card">
+        <div class="blog-card-body">
+          <span class="blog-card-category">Early Retirement</span>
+          <h2><a href="blog/can-i-retire-at-62.html">Can I Retire At 62?</a></h2>
+          <p>Considering early retirement at 62? We break down the pros and cons, including Social Security implications, healthcare costs, and how to make your savings last longer.</p>
+          <span class="blog-card-meta">June 19, 2026 &middot; 10 min read</span>
+        </div>
+      </article>
+
+      <article class="blog-card">
+        <div class="blog-card-body">
+          <span class="blog-card-category">Social Security</span>
+          <h2><a href="blog/social-security-2032-explained.html">Social Security 2032 Explained</a></h2>
+          <p>What does the future hold for Social Security? Learn about projected changes, reform proposals, and how to optimize your benefits for the coming decade.</p>
+          <span class="blog-card-meta">June 19, 2026 &middot; 10 min read</span>
+        </div>
+      </article>
+
+      <article class="blog-card">
+        <div class="blog-card-body">
+          <span class="blog-card-category">Couples &amp; Family</span>
+          <h2><a href="blog/retirement-planning-for-couples.html">Retirement Planning For Couples</a></h2>
+          <p>Retirement planning is different when you're a couple. Learn strategies for coordinating Social Security, managing joint savings, and creating a retirement plan that works for both partners.</p>
+          <span class="blog-card-meta">June 19, 2026 &middot; 10 min read</span>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div class="footer__brand">
+          <a href="index.html" class="nav__logo">Retire<span class="nav__logo-accent">Calc</span></a>
+          <p class="footer__tagline">Free retirement planning tools for every American.</p>
+        </div>
+        <div class="footer__links">
+          <h4 class="footer__heading">Quick Links</h4>
+          <ul>
+            <li><a href="index.html#calculator">Calculator</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="index.html#faq">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="footer__links">
+          <h4 class="footer__heading">Legal</h4>
+          <ul>
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="about.html">About</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>&copy; 2026 RetireCalc. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
