@@ -1,8 +1,5 @@
 User-agent: *
 Allow: /
 
-# Sitemap location
 Sitemap: https://retirecalc-3zu.pages.dev/rc-sitemap.xml
 
-# Disallow nothing for now
-Disallow:
