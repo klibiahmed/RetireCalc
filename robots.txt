@@ -1,5 +1,3 @@
 User-agent: *
 Allow: /
-
-Sitemap: https://retirecalc-3zu.pages.dev/rc-sitemap.xml
-
+Sitemap: https://retirecalc-3zu.pages.dev/sitemap.xml
